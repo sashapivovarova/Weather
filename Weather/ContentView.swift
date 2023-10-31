@@ -8,26 +8,33 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var myName: String = "not yet"
-    
-    var myCustomClousure: (String, String) -> String = { prefix, name in
-        return prefix + name
-    }
+    @State var result: String = "...."
     
     var body: some View {
         VStack {
-            Text(myName)
             Button {
-                //                myName = createName(prefix: "Hello, ", name: "sasha!")
-                myName = myCustomClousure("Hello, ", "sasha")
+                result = sumTwoNumber(4, 2)
+                result = minusTwoNumber(4, 2)
+                result = calculateTwoNumber(4, 2, calculate: {first, second in return first + second})
+                result = calculateTwoNumber(4, 2, calculate: {first, second in return first - second})
+                result = calculateTwoNumber(4, 2, calculate: {first, second in return first * second})
             }label: {
-                Text("Hit Me")
+                Text("Calculate")
             }
+            Text(result)
         }
     }
     
-    func createName(prefix: String, name: String) -> String {
-        return prefix + name
+    func sumTwoNumber(_ first: Int, _ second: Int) -> String {
+        return String(first + second)
+    }
+    
+    func minusTwoNumber(_ first: Int, _ second: Int) -> String {
+        return String(first - second)
+    }
+    
+    func calculateTwoNumber(_ first: Int, _ second: Int, calculate: (Int, Int) -> Int) -> String {
+        return String(calculate(first, second))
     }
 }
 
