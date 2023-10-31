@@ -9,15 +9,13 @@ import SwiftUI
 
 struct ContentView: View {
     let friends = ["Sasha", "Min", "Olive", "Happy"]
-    let ages = [11,22,33,44]
+    let ages = [10,20,30,40]
     
     var body: some View {
         List {
-            ForEach(ages.filter({ item in
-                item % 2 == 0
-            }).map({ item in String(item)}), id: \.self) { item in
-                Text(item)
-            }
+            Text(ages.reduce(0, { partialResult, next in
+                partialResult + next
+            }).description)
         }
     }
 }
