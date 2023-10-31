@@ -8,14 +8,26 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var myName: String = "not yet"
+    
+    var myCustomClousure: (String, String) -> String = { prefix, name in
+        return prefix + name
+    }
+    
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+            Text(myName)
+            Button {
+                //                myName = createName(prefix: "Hello, ", name: "sasha!")
+                myName = myCustomClousure("Hello, ", "sasha")
+            }label: {
+                Text("Hit Me")
+            }
         }
-        .padding()
+    }
+    
+    func createName(prefix: String, name: String) -> String {
+        return prefix + name
     }
 }
 
