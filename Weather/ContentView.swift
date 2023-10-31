@@ -8,15 +8,34 @@
 import SwiftUI
 
 struct ContentView: View {
-    let friends = ["Sasha", "Min", "Olive", "Happy"]
-    let ages = [10,20,30,40]
+    @State var friends = ["Sasha Kim", "Min Lee", "Olive Sato", "Happy Park"]
     
     var body: some View {
-        List {
-            Text(ages.reduce(0, { partialResult, next in
-                partialResult + next
-            }).description)
+        VStack{
+            List {
+                ForEach(friends, id: \.self) { friend in
+                    Text(friend)
+                }
+            }
+            //            Button("Remove space") {
+            //                friends = removeSpace(friends)
+            //            }
+            Button("Remove space") {
+                friends = friends.map({friend in
+                    friend.replacingOccurrences(of: " ", with: "")
+                })
+            }
         }
+    }
+    
+    func removeSpace(_ names: [String]) -> [String] {
+        var tempNames:[String] = []
+        
+        for item in names {
+            tempNames.append(item.replacingOccurrences(of: " ", with: ""))
+        }
+        
+        return tempNames
     }
 }
 
