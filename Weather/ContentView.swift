@@ -8,21 +8,14 @@
 import SwiftUI
 
 struct ContentView: View {
-    
+    let friends = ["Sasha", "Min", "Olive", "Happy"]
     
     var body: some View {
-        VStack {
-            Text("sasha")
-                .onAppear {
-                    trailingClosure(first: 3, second: 4) { a, b in
-                        print("\(a)+\(b)")
-                    }
-                }
+        List {
+            ForEach(friends.map({item in item + "- Kor"}), id: \.self) { friend in
+                Text(friend)
+            }
         }
-    }
-    
-    func trailingClosure(first: Int, second: Int, action: (Int, Int)->()) {
-        action(first, second)
     }
 }
 
