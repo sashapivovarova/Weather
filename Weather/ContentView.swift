@@ -17,25 +17,26 @@ struct ContentView: View {
                     Text(friend)
                 }
             }
-            //            Button("Remove space") {
-            //                friends = removeSpace(friends)
+            //            Button("Filter name") {
+            //                friends = filterName(friends, filteredName: "Sasha Kim")
             //            }
-            Button("Remove space") {
-                friends = friends.map({friend in
-                    friend.replacingOccurrences(of: " ", with: "")
+            Button("Filter name") {
+                friends = friends.filter({friend in
+                    friend == "Sasha Kim"
                 })
             }
         }
     }
     
-    func removeSpace(_ names: [String]) -> [String] {
-        var tempNames:[String] = []
+    func filterName(_ names: [String], filteredName: String) -> [String] {
+        var tempList: [String] = []
         
         for item in names {
-            tempNames.append(item.replacingOccurrences(of: " ", with: ""))
+            if item == filteredName {
+                tempList.append(item)
+            }
         }
-        
-        return tempNames
+        return tempList
     }
 }
 
