@@ -9,10 +9,11 @@ import SwiftUI
 
 struct ContentView: View {
     let friends = ["Sasha", "Min", "Olive", "Happy"]
+    let ages = [11,22,33,44]
     
     var body: some View {
         List {
-            ForEach(friends.map({item in item + "- Kor"}), id: \.self) { friend in
+            ForEach(ages.map({item in String(item)}), id: \.self) { friend in
                 Text(friend)
             }
         }
