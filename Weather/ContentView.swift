@@ -13,8 +13,10 @@ struct ContentView: View {
     
     var body: some View {
         List {
-            ForEach(ages.map({item in String(item)}), id: \.self) { friend in
-                Text(friend)
+            ForEach(ages.filter({ item in
+                item % 2 == 0
+            }).map({ item in String(item)}), id: \.self) { item in
+                Text(item)
             }
         }
     }
