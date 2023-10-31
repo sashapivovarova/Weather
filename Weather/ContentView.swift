@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var friends = ["Sasha Kim", "Min Lee", "Olive Sato", "Happy Park"]
+    @State var friends = ["Sasha Kim", "Min Lee", "Olive Sato", "Happy Park", "SashaKim"]
     
     var body: some View {
         VStack{
@@ -21,8 +21,11 @@ struct ContentView: View {
             //                friends = filterName(friends, filteredName: "Sasha Kim")
             //            }
             Button("Filter name") {
-                friends = friends.filter({friend in
-                    friend == "Sasha Kim"
+                friends = friends
+                    .map({friend in
+                        friend.replacingOccurrences(of: " ", with: "")})
+                    .filter({friend in
+                    friend == "SashaKim"
                 })
             }
         }
