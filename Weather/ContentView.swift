@@ -8,39 +8,17 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var friends = ["Sasha Kim", "Min Lee", "Olive Sato", "Happy Park", "SashaKim"]
-    
     var body: some View {
-        VStack{
-            List {
-                ForEach(friends, id: \.self) { friend in
-                    Text(friend)
-                }
-            }
-            //            Button("Filter name") {
-            //                friends = filterName(friends, filteredName: "Sasha Kim")
-            //            }
-            Button("Filter name") {
-                friends = friends
-                    .map({friend in
-                        friend.replacingOccurrences(of: " ", with: "")})
-                    .filter({friend in
-                    friend == "SashaKim"
-                })
-            }
+        ZStack{
+//            Color("Peach").ignoresSafeArea()
+            Color.peach2.ignoresSafeArea()
+            Text("Hello")
         }
     }
-    
-    func filterName(_ names: [String], filteredName: String) -> [String] {
-        var tempList: [String] = []
-        
-        for item in names {
-            if item == filteredName {
-                tempList.append(item)
-            }
-        }
-        return tempList
-    }
+}
+
+extension Color {
+    static let peach2 = Color("Peach")
 }
 
 #Preview {
