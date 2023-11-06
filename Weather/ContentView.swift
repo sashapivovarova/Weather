@@ -8,17 +8,27 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    struct Pet {
+        let name: String
+        let ownerName: String
+        let type: String
+    }
+    
+    let myPet = Pet(name: "Cherry", ownerName: "Sasha", type: "Shiba")
+    let myPet2 = Pet(name: "Happy", ownerName: "Sasha", type: "Jindo")
+    
     var body: some View {
-        ZStack{
-//            Color("Peach").ignoresSafeArea()
-            Color.peach2.ignoresSafeArea()
-            Text("Hello")
+        VStack{
+            Text(myPet.name)
+            Text(myPet.ownerName)
+            Text(myPet.type)
+            Divider()
+            Text(myPet2.name)
+            Text(myPet2.ownerName)
+            Text(myPet2.type)
         }
     }
-}
-
-extension Color {
-    static let peach2 = Color("Peach")
 }
 
 #Preview {
