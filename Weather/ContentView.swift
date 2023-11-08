@@ -10,18 +10,21 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @State var isTurnedOn = false
-    @State var myText: String = ""
+    @State var myPoint: Float = 0
     
     var body: some View {
         VStack{
-            Toggle(isOn: $isTurnedOn) {
-                Text("Switch")
+            Text(myPoint.description)
+            Slider(value: $myPoint, in: 0...100, step: 1) {
+                Text("My Slider")
+            } minimumValueLabel: {
+                Text("0")
+            } maximumValueLabel: {
+                Text("100")
             }
-            .padding()
-            
-            TextField("test", text: $myText)
+            .tint(.peach)
         }
+        .padding()
     }
 }
 
