@@ -10,10 +10,18 @@ import SwiftUI
 
 struct ContentView: View {
     
+    @State var isTurnedOn = false
+    @State var myText: String = ""
+    
     var body: some View {
-        Image(systemName: "heart")
-            .resizable()
-            .clipShape(Rectangle())
+        VStack{
+            Toggle(isOn: $isTurnedOn) {
+                Text("Switch")
+            }
+            .padding()
+            
+            TextField("test", text: $myText)
+        }
     }
 }
 
