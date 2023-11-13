@@ -10,17 +10,16 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @State var selectedItem: String = "Please select the prefecture."
+    @State var inputText: String = "Please intput the information about you."
     
     var body: some View {
         VStack{
-            Text(selectedItem)
-            Picker(selection: $selectedItem, label: /*@START_MENU_TOKEN@*/Text("Picker")/*@END_MENU_TOKEN@*/) {
-                Text("Kansai - Kyoto").tag("Kyoto")
-                Text("Kanto - Tokyo").tag("Tokyo")
-            }
-            .pickerStyle(.wheel)
+            TextEditor(text: $inputText)
         }
+        .padding()
+        .background(.pink)
+        .frame(height: 300)
+        .multilineTextAlignment(.center)
     }
 }
 
