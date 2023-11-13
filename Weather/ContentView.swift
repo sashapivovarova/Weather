@@ -10,21 +10,16 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @State var myPoint: Float = 0
+    @State var myLevel: Int = 1
     
     var body: some View {
         VStack{
-            Text(myPoint.description)
-            Slider(value: $myPoint, in: 0...100, step: 1) {
-                Text("My Slider")
-            } minimumValueLabel: {
-                Text("0")
-            } maximumValueLabel: {
-                Text("100")
+            Stepper(value: $myLevel, in: 1...10) {
+                Text("Level \(myLevel)")
             }
-            .tint(.peach)
         }
         .padding()
+        .colorMultiply(.pink)
     }
 }
 
