@@ -10,16 +10,16 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @State var myLevel: Int = 1
+    @State var selectedItem: String = "Please select the prefecture."
     
     var body: some View {
         VStack{
-            Stepper(value: $myLevel, in: 1...10) {
-                Text("Level \(myLevel)")
+            Text(selectedItem)
+            Picker(selection: $selectedItem, label: /*@START_MENU_TOKEN@*/Text("Picker")/*@END_MENU_TOKEN@*/) {
+                Text("Kansai - Kyoto").tag("Kyoto")
+                Text("Kanto - Tokyo").tag("Tokyo")
             }
         }
-        .padding()
-        .colorMultiply(.pink)
     }
 }
 
