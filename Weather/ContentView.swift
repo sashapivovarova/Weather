@@ -19,6 +19,7 @@ struct ContentView: View {
                 Text("Kansai - Kyoto").tag("Kyoto")
                 Text("Kanto - Tokyo").tag("Tokyo")
             }
+            .pickerStyle(.wheel)
         }
     }
 }
