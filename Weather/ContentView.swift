@@ -10,25 +10,35 @@ import SwiftUI
 
 struct ContentView: View {
     
+    @State var isLighting: Bool = false
+    
     var body: some View {
         VStack{
-            //#FFAAC1
-            //255 170 194
-            //Color(red: 255/255.0, green: 170/255.0, blue: 194/255.0)
-            Color(0xFFAAC1)
+            Image(systemName: "cloud")
+                .offset(y: -200)
+            
+            HStack{
+                Image(systemName: "bolt")
+                    .rotationEffect(isLighting ? .degrees(0) : .degrees(180+360))
+                    .offset(y: isLighting ? 0 : -200)
+                    .padding()
+                    .animation(.easeInOut(duration: 2), value:isLighting)
+                Image(systemName: "bolt")
+                    .offset(y: isLighting ? 0 : -200)
+                    .padding()
+                    .animation(.easeIn(duration: 2), value:isLighting)
+                Image(systemName: "bolt")
+                    .offset(y: isLighting ? 0 : -200)
+                    .padding()
+                    .animation(.easeOut(duration: 2), value:isLighting)
+            }
+            
+            Button {
+                isLighting.toggle()
+            } label: {
+                Text("Click")
+            }
         }
-    }
-}
-
-extension Color {
-    init(_ hex: UInt, alpha: Double = 1) {
-        self.init(
-            .sRGB,
-            red: Double((hex >> 16) & 0xFF) / 255,
-            green: Double((hex >> 8) & 0xFF) / 255,
-            blue: Double((hex >> 0) & 0xFF) / 255,
-            opacity: alpha
-        )
     }
 }
 
