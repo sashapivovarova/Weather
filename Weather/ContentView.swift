@@ -13,18 +13,38 @@ struct ContentView: View {
     @State var isLighting: Bool = false
     
     var body: some View {
-        Form {
-            HStack{
-                Image(systemName: "heart")
-                Text("Sasha")
-            }
-            HStack{
-                Image(systemName: "heart")
-                Text("Brat")
-            }
-            HStack{
-                Image(systemName: "heart")
-                Text("Rabbit")
+        VStack{
+            LazyVGrid(columns: [GridItem(.fixed(100)),
+                                GridItem(spacing: 30),
+                                GridItem(alignment: .leading)]) {
+                
+                /*@START_MENU_TOKEN@*/Text("Placeholder")/*@END_MENU_TOKEN@*/
+                    .frame(width: 100, height: 100)
+                    .background(.purple)
+                /*@START_MENU_TOKEN@*/Text("Placeholder")/*@END_MENU_TOKEN@*/
+                    .frame(width: 100, height: 100)
+                    .background(.purple)
+                /*@START_MENU_TOKEN@*/Text("Placeholder")/*@END_MENU_TOKEN@*/
+                    .frame(width: 100, height: 100)
+                    .background(.purple)
+                /*@START_MENU_TOKEN@*/Text("Placeholder")/*@END_MENU_TOKEN@*/
+                    .frame(width: 100, height: 100)
+                    .background(.purple)
+                /*@START_MENU_TOKEN@*/Text("Placeholder")/*@END_MENU_TOKEN@*/
+                    .frame(width: 100, height: 100)
+                    .background(.purple)
+                /*@START_MENU_TOKEN@*/Text("Placeholder")/*@END_MENU_TOKEN@*/
+                    .frame(width: 100, height: 100)
+                    .background(.purple)
+                /*@START_MENU_TOKEN@*/Text("Placeholder")/*@END_MENU_TOKEN@*/
+                    .frame(width: 100, height: 100)
+                    .background(.purple)
+                /*@START_MENU_TOKEN@*/Text("Placeholder")/*@END_MENU_TOKEN@*/
+                    .frame(width: 100, height: 100)
+                    .background(.purple)
+                /*@START_MENU_TOKEN@*/Text("Placeholder")/*@END_MENU_TOKEN@*/
+                    .frame(width: 100, height: 100)
+                    .background(.purple)
             }
         }
     }
