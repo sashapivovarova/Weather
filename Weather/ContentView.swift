@@ -13,15 +13,19 @@ struct ContentView: View {
     @State var isLighting: Bool = false
     
     var body: some View {
-        ZStack{
-            LinearGradient(gradient: Gradient(colors: [Color.white, Color.peach]),
-                           startPoint: .topLeading,
-                           endPoint: .bottomTrailing)
-            .ignoresSafeArea()
-            Text("Sasha")
-                .background(LinearGradient(gradient: Gradient(colors: [Color.white, Color.peach]),
-                                           startPoint: .topLeading,
-                                           endPoint: .bottomTrailing))
+        Form {
+            HStack{
+                Image(systemName: "heart")
+                Text("Sasha")
+            }
+            HStack{
+                Image(systemName: "heart")
+                Text("Brat")
+            }
+            HStack{
+                Image(systemName: "heart")
+                Text("Rabbit")
+            }
         }
     }
 }
