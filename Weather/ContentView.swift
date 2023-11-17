@@ -13,39 +13,25 @@ struct ContentView: View {
     @State var isLighting: Bool = false
     
     var body: some View {
-        VStack{
-            LazyVGrid(columns: [GridItem(.fixed(100)),
-                                GridItem(spacing: 30),
-                                GridItem(alignment: .leading)]) {
-                
-                /*@START_MENU_TOKEN@*/Text("Placeholder")/*@END_MENU_TOKEN@*/
-                    .frame(width: 100, height: 100)
-                    .background(.purple)
-                /*@START_MENU_TOKEN@*/Text("Placeholder")/*@END_MENU_TOKEN@*/
-                    .frame(width: 100, height: 100)
-                    .background(.purple)
-                /*@START_MENU_TOKEN@*/Text("Placeholder")/*@END_MENU_TOKEN@*/
-                    .frame(width: 100, height: 100)
-                    .background(.purple)
-                /*@START_MENU_TOKEN@*/Text("Placeholder")/*@END_MENU_TOKEN@*/
-                    .frame(width: 100, height: 100)
-                    .background(.purple)
-                /*@START_MENU_TOKEN@*/Text("Placeholder")/*@END_MENU_TOKEN@*/
-                    .frame(width: 100, height: 100)
-                    .background(.purple)
-                /*@START_MENU_TOKEN@*/Text("Placeholder")/*@END_MENU_TOKEN@*/
-                    .frame(width: 100, height: 100)
-                    .background(.purple)
-                /*@START_MENU_TOKEN@*/Text("Placeholder")/*@END_MENU_TOKEN@*/
-                    .frame(width: 100, height: 100)
-                    .background(.purple)
-                /*@START_MENU_TOKEN@*/Text("Placeholder")/*@END_MENU_TOKEN@*/
-                    .frame(width: 100, height: 100)
-                    .background(.purple)
-                /*@START_MENU_TOKEN@*/Text("Placeholder")/*@END_MENU_TOKEN@*/
-                    .frame(width: 100, height: 100)
-                    .background(.purple)
+        NavigationStack{
+            Form {
+                NavigationLink {
+                    ZStack {
+                        Color.peach.ignoresSafeArea()
+                        Text("Destination")
+                    }
+                    .navigationTitle("What you like")
+                } label: {
+                    Label("Likes", systemImage: "heart")
+                }
+                NavigationLink {
+                    Text("Destination")
+                } label: {
+                    Label("Camera", systemImage: "camera")
+                }
             }
+            .navigationTitle("Settings")
+            .toolbar(.hidden)
         }
     }
 }
