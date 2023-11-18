@@ -10,29 +10,23 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @State var isLighting: Bool = false
+    @State var isShown: Bool = false
     
     var body: some View {
-        NavigationStack{
-            Form {
-                NavigationLink {
-                    ZStack {
-                        Color.peach.ignoresSafeArea()
-                        Text("Destination")
-                    }
-                    .navigationTitle("What you like")
-                } label: {
-                    Label("Likes", systemImage: "heart")
-                }
-                NavigationLink {
-                    Text("Destination")
-                } label: {
-                    Label("Camera", systemImage: "camera")
-                }
+        VStack {
+            if isShown {
+                RoundedRectangle(cornerRadius: /*@START_MENU_TOKEN@*/25.0/*@END_MENU_TOKEN@*/)
+                    .frame(height: 300)
+                    .foregroundColor(.peach)
+                    .transition(.scale)
             }
-            .navigationTitle("Settings")
-            .toolbar(.hidden)
+            Button {
+                isShown.toggle()
+            } label: {
+                Text("Show")
+            }
         }
+        .animation(.easeIn, value: isShown)
     }
 }
 
