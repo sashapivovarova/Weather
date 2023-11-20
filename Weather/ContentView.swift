@@ -10,23 +10,84 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @State var isShown: Bool = false
+    @State var id: String = ""
+    @State var password: String = ""
+    @State var checking: Bool = false
+    @State var success: Bool = false
+    @State var fail: Bool = false
     
     var body: some View {
         VStack {
-            if isShown {
-                RoundedRectangle(cornerRadius: /*@START_MENU_TOKEN@*/25.0/*@END_MENU_TOKEN@*/)
-                    .frame(height: 300)
-                    .foregroundColor(.peach)
-                    .transition(.scale)
+            HStack{
+                idLabel()
+                TextField("Enter ID", text: $id)
+                    .textFieldStyle(.roundedBorder)
+            }
+            HStack{
+                pwLabel()
+                if checking {
+                    TextField("Enter Password", text: $password)
+                        .textFieldStyle(.roundedBorder)
+                } else {
+                    SecureField("Enter Password", text: $password)
+                        .textFieldStyle(.roundedBorder)
+                }
+                Button {
+                    checking.toggle()
+                }label: {
+                    Image(systemName: "eye")
+                }
             }
             Button {
-                isShown.toggle()
+                success = checkLoggedIn(id: id, pw: password)
             } label: {
-                Text("Show")
+                Text("Log in")
             }
+            .fullScreenCover(isPresented: $success) {
+                ZStack{
+                    Color.orange.ignoresSafeArea()
+                    VStack{
+                        Text("Welcome, \(id)")
+                        Button {
+                            success = false
+                            fail = true
+                        }label: {
+                            Text("Log out")
+                        }
+                    }
+                }
+            }
+            .alert(isPresented: $fail) {
+                Alert(title: Text("Password is wrong!"))
+            }
+            .padding()
         }
-        .animation(.easeIn, value: isShown)
+    }
+    
+    @ViewBuilder
+    func idLabel() -> some View {
+        Label {
+            Text("ID : ")
+        } icon: {
+            Image(systemName: "person.fill")
+        }
+    }
+    
+    @ViewBuilder
+    func pwLabel() -> some View {
+        Label {
+            Text("PW : ")
+        } icon: {
+            Image(systemName: "lock.fill")
+        }
+    }
+    
+    private func checkLoggedIn(id: String, pw: String) -> Bool {
+        if id == "sasha" && pw == "1234" {
+            return true
+        } else {
+            return false
+        }
     }
 }
 
