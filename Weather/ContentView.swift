@@ -9,12 +9,18 @@ import SwiftUI
 
 struct ContentView: View {
     
+    @State var topOffset: CGFloat = 0
+    
     var body: some View {
         ZStack {
-            Image("Cloud")
-                .resizable()
-                .scaledToFill()
-                .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+            
+            GeometryReader { geometry in
+                Image("Cloud")
+                    .resizable()
+                    .scaledToFill()
+                    .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+            }
+            .ignoresSafeArea()
             
             ScrollView {
                 VStack {
@@ -32,9 +38,11 @@ struct ContentView: View {
                     }
                 }
                 
-                VStack {
+                VStack(spacing: 0) {
                     Text("It will be sunny")
-                    
+                        .frame(maxWidth: .infinity)
+                        .background(.ultraThinMaterial)
+                        .zIndex(1)
                     Divider()
                     
                     HStack {
@@ -58,12 +66,29 @@ struct ContentView: View {
                             Image(systemName: "cloud.fill")
                             Text("13")
                         }
+                        
                     }
-                    
+                    .frame(maxWidth: .infinity)
+                    .background(.ultraThinMaterial)
+                    .offset(y: topOffset >= 200  ? 0 : topOffset - 200)
+                    .zIndex(0)
+                    .clipped()
                 }
+                .background(
+                    GeometryReader(content: { geometry -> Color in
+                        
+                        let minY = geometry.frame(in: .global).minY
+                        
+                        DispatchQueue.main.async {
+                            topOffset = minY
+                        }
+                        
+                        return Color.clear
+                    })
+                )
                 .padding()
-                .background(.red)
                 .cornerRadius(13)
+                
                 VStack {
                     HStack {
                         Image(systemName: "calendar")
