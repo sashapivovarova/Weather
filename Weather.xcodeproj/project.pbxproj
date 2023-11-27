@@ -14,6 +14,7 @@
 		5A1262272AE911CE00BBF23A /* WeatherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1262262AE911CE00BBF23A /* WeatherTests.swift */; };
 		5A1262312AE911CE00BBF23A /* WeatherUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1262302AE911CE00BBF23A /* WeatherUITests.swift */; };
 		5A1262332AE911CE00BBF23A /* WeatherUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1262322AE911CE00BBF23A /* WeatherUITestsLaunchTests.swift */; };
+		5A1262F82B144EA000BBF23A /* BlurStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1262F72B144EA000BBF23A /* BlurStackView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		5A12622C2AE911CE00BBF23A /* WeatherUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeatherUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A1262302AE911CE00BBF23A /* WeatherUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherUITests.swift; sourceTree = "<group>"; };
 		5A1262322AE911CE00BBF23A /* WeatherUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		5A1262F72B144EA000BBF23A /* BlurStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurStackView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +100,7 @@
 				5A1262172AE911CA00BBF23A /* ContentView.swift */,
 				5A1262192AE911CD00BBF23A /* Assets.xcassets */,
 				5A12621B2AE911CD00BBF23A /* Preview Content */,
+				5A1262F72B144EA000BBF23A /* BlurStackView.swift */,
 			);
 			path = Weather;
 			sourceTree = "<group>";
@@ -259,6 +262,7 @@
 			files = (
 				5A1262182AE911CA00BBF23A /* ContentView.swift in Sources */,
 				5A1262162AE911CA00BBF23A /* WeatherApp.swift in Sources */,
+				5A1262F82B144EA000BBF23A /* BlurStackView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

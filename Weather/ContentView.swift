@@ -9,11 +9,8 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @State var topOffset: CGFloat = 0
-    
     var body: some View {
         ZStack {
-            
             GeometryReader { geometry in
                 Image("Cloud")
                     .resizable()
@@ -38,13 +35,9 @@ struct ContentView: View {
                     }
                 }
                 
-                VStack(spacing: 0) {
+                BlurStackView {
                     Text("It will be sunny")
-                        .frame(maxWidth: .infinity)
-                        .background(.ultraThinMaterial)
-                        .zIndex(1)
-                    Divider()
-                    
+                } contentView: {
                     HStack {
                         VStack {
                             Text("Now")
@@ -66,37 +59,15 @@ struct ContentView: View {
                             Image(systemName: "cloud.fill")
                             Text("13")
                         }
-                        
                     }
-                    .frame(maxWidth: .infinity)
-                    .background(.ultraThinMaterial)
-                    .offset(y: topOffset >= 200  ? 0 : topOffset - 200)
-                    .zIndex(0)
-                    .clipped()
                 }
-                .background(
-                    GeometryReader(content: { geometry -> Color in
-                        
-                        let minY = geometry.frame(in: .global).minY
-                        
-                        DispatchQueue.main.async {
-                            topOffset = minY
-                        }
-                        
-                        return Color.clear
-                    })
-                )
-                .padding()
-                .cornerRadius(13)
                 
-                VStack {
+                BlurStackView {
                     HStack {
                         Image(systemName: "calendar")
                         Text("From 10 days")
                     }
-                    
-                    Divider()
-                    
+                } contentView: {
                     VStack {
                         HStack {
                             Text("Today")
@@ -118,9 +89,6 @@ struct ContentView: View {
                         }
                     }
                 }
-                .padding()
-                .background(.red)
-                .cornerRadius(13)
             }
         }
     }
