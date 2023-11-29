@@ -9,6 +9,8 @@ import SwiftUI
 
 struct ContentView: View {
     
+    @State var offset: CGFloat = 0
+    
     var body: some View {
         ZStack {
             GeometryReader { geometry in
@@ -21,12 +23,31 @@ struct ContentView: View {
             
             ScrollView {
                 VStack {
-                    Text("Tokyo")
-                        .font(.title)
-                    Text("13")
-                        .font(.system(size: 80, weight: .thin))
-                    Text("Sunny")
-                        .font(.title3)
+                    if offset > 50 {
+                        VStack {
+                            Text("Tokyo")
+                                .font(.title)
+                            HStack {
+                                Text("13")
+                                    .font(.system(size: 80, weight: .thin))
+                                    .opacity(setOpacity())
+                                Text("Sunny")
+                                    .font(.title3)
+                                    .opacity(setOpacity())
+                            }
+                        }
+                    } else {
+                        VStack {
+                            Text("Tokyo")
+                                .font(.title)
+                            HStack {
+                                Text("13")
+                                    .font(.title3)
+                                Text("Sunny")
+                                    .font(.title3)
+                            }
+                        }
+                    }
                     HStack {
                         Text("Max: 18")
                             .font(.title3)
@@ -34,32 +55,52 @@ struct ContentView: View {
                             .font(.title3)
                     }
                 }
+                .offset(y: -offset + 70)
+                .background(
+                    GeometryReader(content: { geometry -> Color in
+                        
+                        let minY = geometry.frame(in: .global).minY
+                        
+                        DispatchQueue.main.async {
+                            offset = minY
+                        }
+                        
+                        return Color.clear
+                    })
+                )
                 
                 BlurStackView {
                     Text("It will be sunny")
                 } contentView: {
-                    HStack {
-                        VStack {
-                            Text("Now")
-                            Image(systemName: "cloud.fill")
-                            Text("13")
-                        }
-                        VStack {
-                            Text("10 AM")
-                            Image(systemName: "cloud.fill")
-                            Text("13")
-                        }
-                        VStack {
-                            Text("11 AM")
-                            Image(systemName: "cloud.fill")
-                            Text("13")
-                        }
-                        VStack {
-                            Text("12 PM")
-                            Image(systemName: "cloud.fill")
-                            Text("13")
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        HStack(spacing: 30) {
+                            ForecastView(time: "Now", imageName: "cloud.sun", celcius: 13)
+                            ForecastView(time: "11", imageName: "cloud", celcius: 12)
+                            ForecastView(time: "12", imageName: "cloud", celcius: 12)
                         }
                     }
+                    //                    HStack {
+                    //                        VStack {
+                    //                            Text("Now")
+                    //                            Image(systemName: "cloud.fill")
+                    //                            Text("13")
+                    //                        }
+                    //                        VStack {
+                    //                            Text("10 AM")
+                    //                            Image(systemName: "cloud.fill")
+                    //                            Text("13")
+                    //                        }
+                    //                        VStack {
+                    //                            Text("11 AM")
+                    //                            Image(systemName: "cloud.fill")
+                    //                            Text("13")
+                    //                        }
+                    //                        VStack {
+                    //                            Text("12 PM")
+                    //                            Image(systemName: "cloud.fill")
+                    //                            Text("13")
+                    //                        }
+                    //                    }
                 }
                 
                 BlurStackView {
@@ -90,6 +131,14 @@ struct ContentView: View {
                     }
                 }
             }
+        }
+    }
+    
+    func setOpacity() -> CGFloat {
+        if offset < 70 {
+            return offset / 70
+        } else {
+            return 1
         }
     }
 }

@@ -15,6 +15,7 @@
 		5A1262312AE911CE00BBF23A /* WeatherUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1262302AE911CE00BBF23A /* WeatherUITests.swift */; };
 		5A1262332AE911CE00BBF23A /* WeatherUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1262322AE911CE00BBF23A /* WeatherUITestsLaunchTests.swift */; };
 		5A1262F82B144EA000BBF23A /* BlurStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1262F72B144EA000BBF23A /* BlurStackView.swift */; };
+		5A1262FA2B17656900BBF23A /* ForecastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1262F92B17656900BBF23A /* ForecastView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,7 @@
 		5A1262302AE911CE00BBF23A /* WeatherUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherUITests.swift; sourceTree = "<group>"; };
 		5A1262322AE911CE00BBF23A /* WeatherUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		5A1262F72B144EA000BBF23A /* BlurStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurStackView.swift; sourceTree = "<group>"; };
+		5A1262F92B17656900BBF23A /* ForecastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,7 @@
 				5A1262192AE911CD00BBF23A /* Assets.xcassets */,
 				5A12621B2AE911CD00BBF23A /* Preview Content */,
 				5A1262F72B144EA000BBF23A /* BlurStackView.swift */,
+				5A1262F92B17656900BBF23A /* ForecastView.swift */,
 			);
 			path = Weather;
 			sourceTree = "<group>";
@@ -263,6 +266,7 @@
 				5A1262182AE911CA00BBF23A /* ContentView.swift in Sources */,
 				5A1262162AE911CA00BBF23A /* WeatherApp.swift in Sources */,
 				5A1262F82B144EA000BBF23A /* BlurStackView.swift in Sources */,
+				5A1262FA2B17656900BBF23A /* ForecastView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
