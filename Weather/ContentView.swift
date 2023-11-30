@@ -21,20 +21,24 @@ struct ContentView: View {
             }
             .ignoresSafeArea()
             
-            ScrollView {
+            ScrollView(showsIndicators: false) {
                 VStack {
                     if offset > 50 {
                         VStack {
                             Text("Tokyo")
                                 .font(.title)
-                            HStack {
-                                Text("13")
-                                    .font(.system(size: 80, weight: .thin))
-                                    .opacity(setOpacity())
-                                Text("Sunny")
-                                    .font(.title3)
-                                    .opacity(setOpacity())
-                            }
+                            Text("13")
+                                .font(.system(size: 80, weight: .thin))
+                                .opacity(setOpacity())
+                            Text("Sunny")
+                                .font(.title3)
+                                .opacity(setOpacity())
+                        }
+                        HStack {
+                            Text("Max: 18")
+                                .font(.title3)
+                            Text("Min: 13")
+                                .font(.title3)
                         }
                     } else {
                         VStack {
@@ -48,12 +52,7 @@ struct ContentView: View {
                             }
                         }
                     }
-                    HStack {
-                        Text("Max: 18")
-                            .font(.title3)
-                        Text("Min: 13")
-                            .font(.title3)
-                    }
+                    
                 }
                 .offset(y: -offset + 70)
                 .background(
@@ -77,30 +76,11 @@ struct ContentView: View {
                             ForecastView(time: "Now", imageName: "cloud.sun", celcius: 13)
                             ForecastView(time: "11", imageName: "cloud", celcius: 12)
                             ForecastView(time: "12", imageName: "cloud", celcius: 12)
+                            ForecastView(time: "13", imageName: "cloud", celcius: 12)
+                            ForecastView(time: "14", imageName: "cloud", celcius: 12)
+                            ForecastView(time: "15", imageName: "cloud", celcius: 12)
                         }
                     }
-                    //                    HStack {
-                    //                        VStack {
-                    //                            Text("Now")
-                    //                            Image(systemName: "cloud.fill")
-                    //                            Text("13")
-                    //                        }
-                    //                        VStack {
-                    //                            Text("10 AM")
-                    //                            Image(systemName: "cloud.fill")
-                    //                            Text("13")
-                    //                        }
-                    //                        VStack {
-                    //                            Text("11 AM")
-                    //                            Image(systemName: "cloud.fill")
-                    //                            Text("13")
-                    //                        }
-                    //                        VStack {
-                    //                            Text("12 PM")
-                    //                            Image(systemName: "cloud.fill")
-                    //                            Text("13")
-                    //                        }
-                    //                    }
                 }
                 
                 BlurStackView {

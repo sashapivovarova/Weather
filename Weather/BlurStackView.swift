@@ -13,6 +13,7 @@ struct BlurStackView<Header: View, Content: View>: View {
     var contentView: Content
     
     @State var topOffset: CGFloat = 0
+    @State var bottomOffset: CGFloat = 0
     
     init(@ViewBuilder headerView: @escaping () -> Header,
          @ViewBuilder contentView: @escaping () -> Content) {
@@ -24,33 +25,37 @@ struct BlurStackView<Header: View, Content: View>: View {
         VStack(spacing: 0) {
             
             headerView
-                .frame(maxWidth: .infinity)
-                .background(.ultraThinMaterial)
+                .frame(maxWidth: .infinity, maxHeight: 35, alignment: .leading)
+                .padding()
+                .background(.ultraThinMaterial, in: IndividualCorner(corners: bottomOffset < 35 ? .allCorners : [.topLeft, .topRight], radius: 14))
                 .zIndex(1)
             
             Divider()
             
             contentView
                 .frame(maxWidth: .infinity)
-                .background(.ultraThinMaterial)
+                .padding()
+                .background(.ultraThinMaterial, in: IndividualCorner(corners: [.bottomLeft, .bottomRight], radius: 14))
                 .offset(y: topOffset >= 200  ? 0 : topOffset - 200)
                 .zIndex(0)
                 .clipped()
         }
+        .offset(y: topOffset >= 200  ? 0 : -(topOffset - 200))
         .background(
             GeometryReader(content: { geometry -> Color in
                 
                 let minY = geometry.frame(in: .global).minY
+                let maxY = geometry.frame(in: .global).maxY
                 
                 DispatchQueue.main.async {
                     topOffset = minY
+                    bottomOffset = maxY - 220
                 }
                 
                 return Color.clear
             })
         )
         .padding()
-        .cornerRadius(13)
     }
 }
 
