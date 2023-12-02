@@ -92,20 +92,19 @@ struct ContentView: View {
                     VStack {
                         HStack {
                             Text("Today")
-                            Image(systemName: "cloud")
-                            Text("11")
-                            Text("18")
-                        }
-                        HStack {
-                            Text("Friday")
-                            Image(systemName: "cloud")
-                            Text("11")
-                            Text("18")
-                        }
-                        HStack {
-                            Text("Saterday")
-                            Image(systemName: "cloud")
-                            Text("11")
+                            Image(systemName: "cloud.sun.fill")
+                                .symbolRenderingMode(.multicolor)
+                            Text("13")
+                            ZStack {
+                                Capsule()
+                                    .fill(.linearGradient(Gradient(colors: [.blue, .green]), startPoint: .leading, endPoint: .trailing))
+                                GeometryReader { proxy in
+                                    Capsule()
+                                        .foregroundColor(.white)
+                                        .frame(width:20)
+                                        
+                                }
+                            }
                             Text("18")
                         }
                     }
