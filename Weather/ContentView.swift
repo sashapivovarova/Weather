@@ -89,23 +89,57 @@ struct ContentView: View {
                         Text("From 10 days")
                     }
                 } contentView: {
-                    VStack {
-                        HStack {
-                            Text("Today")
-                            Image(systemName: "cloud.sun.fill")
-                                .symbolRenderingMode(.multicolor)
-                            Text("13")
-                            ZStack {
-                                Capsule()
-                                    .fill(.linearGradient(Gradient(colors: [.blue, .green]), startPoint: .leading, endPoint: .trailing))
-                                GeometryReader { proxy in
+                    ForEach(forecast) { dayForecast in
+                        VStack {
+                            HStack {
+                                Text(dayForecast.day)
+                                Image(systemName: dayForecast.imageName)
+                                    .symbolRenderingMode(.multicolor)
+                                Text("\(dayForecast.lowTemperature.description)")
+                                ZStack {
                                     Capsule()
-                                        .foregroundColor(.white)
-                                        .frame(width:20)
+                                        .fill(.linearGradient(Gradient(colors: [.blue, .green]), startPoint: .leading, endPoint: .trailing))
+                                    GeometryReader { proxy in
+                                        Capsule()
+                                            .foregroundColor(.white)
+                                            .frame(width:dayForecast.arrange)
                                         
+                                    }
                                 }
+                                Text("\(dayForecast.highTemperature.description)")
                             }
-                            Text("18")
+                        }
+                    }
+                }
+                HStack {
+                    BlurStackView {
+                        HStack {
+                            Image(systemName: "calendar")
+                            Text("Feels like")
+                        }
+                    } contentView: {
+                        VStack(alignment: .leading) {
+                            Text("10")
+                                .font(.title)
+                            
+                            Spacer()
+                            
+                            Text("It feels like cold with wind")
+                        }
+                    }
+                    BlurStackView {
+                        HStack {
+                            Image(systemName: "calendar")
+                            Text("Humidity")
+                        }
+                    } contentView: {
+                        VStack(alignment: .leading) {
+                            Text("10%")
+                                .font(.title)
+                            
+                            Spacer()
+                            
+                            Text("The iced temperatur is 2")
                         }
                     }
                 }
