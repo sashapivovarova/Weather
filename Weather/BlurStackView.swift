@@ -40,6 +40,7 @@ struct BlurStackView<Header: View, Content: View>: View {
                 .zIndex(0)
                 .clipped()
         }
+        .opacity(getOpacity())
         .offset(y: topOffset >= 200  ? 0 : -(topOffset - 200))
         .background(
             GeometryReader(content: { geometry -> Color in
@@ -56,6 +57,15 @@ struct BlurStackView<Header: View, Content: View>: View {
             })
         )
         .padding()
+    }
+    
+    private func getOpacity() -> CGFloat {
+        if bottomOffset < 35 {
+            let progress = bottomOffset / 35
+            return progress
+        } else {
+            return 1
+        }
     }
 }
 
