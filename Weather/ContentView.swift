@@ -13,13 +13,7 @@ struct ContentView: View {
     
     var body: some View {
         ZStack {
-            GeometryReader { geometry in
-                Image("Cloud")
-                    .resizable()
-                    .scaledToFill()
-                    .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
-            }
-            .ignoresSafeArea()
+            BackgroundView()
             
             ScrollView(showsIndicators: false) {
                 VStack {
@@ -59,11 +53,9 @@ struct ContentView: View {
                     GeometryReader(content: { geometry -> Color in
                         
                         let minY = geometry.frame(in: .global).minY
-                        
                         DispatchQueue.main.async {
                             offset = minY
                         }
-                        
                         return Color.clear
                     })
                 )
@@ -113,6 +105,7 @@ struct ContentView: View {
                         }
                     }
                 }
+                
                 HStack {
                     BlurStackView {
                         HStack {
@@ -121,11 +114,8 @@ struct ContentView: View {
                         }
                     } contentView: {
                         VStack(alignment: .leading) {
-                            Text("10")
-                                .font(.title)
-                            
+                            TitleLabel(titleText: "10%")
                             Spacer()
-                            
                             Text("It feels like cold with wind")
                         }
                     }
@@ -136,11 +126,8 @@ struct ContentView: View {
                         }
                     } contentView: {
                         VStack(alignment: .leading) {
-                            Text("10%")
-                                .font(.title)
-                            
+                            TitleLabel(titleText: "10%")
                             Spacer()
-                            
                             Text("The iced temperatur is 2")
                         }
                     }
@@ -153,11 +140,8 @@ struct ContentView: View {
                         }
                     } contentView: {
                         VStack(alignment: .leading) {
-                            Text("10")
-                                .font(.title)
-                            
+                            TitleLabel(titleText: "10%")
                             Spacer()
-                            
                             Text("It feels like cold with wind")
                         }
                     }
@@ -168,11 +152,8 @@ struct ContentView: View {
                         }
                     } contentView: {
                         VStack(alignment: .leading) {
-                            Text("10%")
-                                .font(.title)
-                            
+                            TitleLabel(titleText: "10%")
                             Spacer()
-                            
                             Text("The iced temperatur is 2")
                         }
                     }
@@ -185,11 +166,8 @@ struct ContentView: View {
                         }
                     } contentView: {
                         VStack(alignment: .leading) {
-                            Text("10")
-                                .font(.title)
-                            
+                            TitleLabel(titleText: "10%")
                             Spacer()
-                            
                             Text("It feels like cold with wind")
                         }
                     }
@@ -200,11 +178,8 @@ struct ContentView: View {
                         }
                     } contentView: {
                         VStack(alignment: .leading) {
-                            Text("10%")
-                                .font(.title)
-                            
+                            TitleLabel(titleText: "10%")
                             Spacer()
-                            
                             Text("The iced temperatur is 2")
                         }
                     }
@@ -213,7 +188,18 @@ struct ContentView: View {
         }
     }
     
-    func setOpacity() -> CGFloat {
+    @ViewBuilder
+    func BackgroundView() -> some View {
+        GeometryReader { geometry in
+            Image("Cloud")
+                .resizable()
+                .scaledToFill()
+                .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+        }
+        .ignoresSafeArea()
+    }
+    
+    private func setOpacity() -> CGFloat {
         if offset < 70 {
             return offset / 70
         } else {

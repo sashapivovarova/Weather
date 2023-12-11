@@ -18,6 +18,7 @@
 		5A1262FA2B17656900BBF23A /* ForecastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1262F92B17656900BBF23A /* ForecastView.swift */; };
 		5A1262FC2B18AC0100BBF23A /* IndividualCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1262FB2B18AC0100BBF23A /* IndividualCorner.swift */; };
 		5A1262FE2B1B01B900BBF23A /* Forecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1262FD2B1B01B900BBF23A /* Forecast.swift */; };
+		5A1263002B273CB300BBF23A /* TitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1262FF2B273CB300BBF23A /* TitleLabel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,7 @@
 		5A1262F92B17656900BBF23A /* ForecastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastView.swift; sourceTree = "<group>"; };
 		5A1262FB2B18AC0100BBF23A /* IndividualCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndividualCorner.swift; sourceTree = "<group>"; };
 		5A1262FD2B1B01B900BBF23A /* Forecast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Forecast.swift; sourceTree = "<group>"; };
+		5A1262FF2B273CB300BBF23A /* TitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleLabel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +112,7 @@
 				5A12621B2AE911CD00BBF23A /* Preview Content */,
 				5A1262FB2B18AC0100BBF23A /* IndividualCorner.swift */,
 				5A1262FD2B1B01B900BBF23A /* Forecast.swift */,
+				5A1262FF2B273CB300BBF23A /* TitleLabel.swift */,
 			);
 			path = Weather;
 			sourceTree = "<group>";
@@ -273,6 +276,7 @@
 				5A1262FC2B18AC0100BBF23A /* IndividualCorner.swift in Sources */,
 				5A1262162AE911CA00BBF23A /* WeatherApp.swift in Sources */,
 				5A1262F82B144EA000BBF23A /* BlurStackView.swift in Sources */,
+				5A1263002B273CB300BBF23A /* TitleLabel.swift in Sources */,
 				5A1262FE2B1B01B900BBF23A /* Forecast.swift in Sources */,
 				5A1262FA2B17656900BBF23A /* ForecastView.swift in Sources */,
 			);
