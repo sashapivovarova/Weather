@@ -78,7 +78,7 @@ struct ContentView: View {
                 BlurStackView {
                     HStack {
                         Image(systemName: "calendar")
-                        Text("From 10 days")
+                        Text("10 days")
                     }
                 } contentView: {
                     VStack {
